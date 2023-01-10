@@ -1,6 +1,5 @@
 #include <iostream>
 #include <map>
-#define MAX 10001
 using namespace std;
 
 map<string, bool> s;
