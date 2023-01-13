@@ -25,13 +25,16 @@ int solution(int a, int b, int c) {
 }
 
 int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+
 	int a, b, c;
 	
 	while (1) {
 		cin >> a >> b >> c;
 		if (a == -1 && b == -1 && c == -1) break;
 
-		cout << "w(" << a << ", " << b << ", " << c << ") = " << solution(a, b, c) << endl;
+		cout << "w(" << a << ", " << b << ", " << c << ") = " << solution(a, b, c) << '\n';
 	}
 
 	return 0;
