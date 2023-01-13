@@ -16,7 +16,7 @@ int main() {
 	int N, M;
 	cin >> N >> M;
 
-	for (int i = 1; i <= N; i++) {
+	for (int i = 0; i < N; i++) {
 		cin >> str;
 		v.push_back(str);
 		m.insert(make_pair(str, i));
@@ -24,7 +24,7 @@ int main() {
 	for (int i = 0; i < M; i++) {
 		cin >> str;
 		if (str[0] >= 65 && str[0] <= 90) {
-			re.push_back(to_string(m[str]));
+			re.push_back(to_string(m[str] + 1));
 		}
 		else {
 			re.push_back(v[stoi(str) - 1]);
