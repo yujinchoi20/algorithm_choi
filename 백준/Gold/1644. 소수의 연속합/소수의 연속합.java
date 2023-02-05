@@ -12,22 +12,7 @@ public class Main {
 		N = Integer.parseInt(br.readLine());
 		
 		//소수 구하기
-		for(int i = 1; i <= N; i++) {
-			prime[i] = i;
-		}
-		
-		for(int i = 2; i * i <= N; i++) {
-			if(prime[i] == 0) continue;
-			for(int j = i * i; j <= N; j += i) {
-				prime[j] = 0;
-			}
-		}
-
-		for(int i = 2; i <= N; i++) {
-			if(prime[i] != 0) {
-				primeArr.add(prime[i]);
-			}
-		}
+		makePrimeArr();
 
 		//연속합으로 정수를 구할 수 있는지 판별
 		//슬라이딩 윈도우 알고리즘
@@ -48,5 +33,23 @@ public class Main {
 		
 		System.out.println(cnt);
 	}
+	
+	public static void makePrimeArr() {
+		for(int i = 1; i <= N; i++) {
+			prime[i] = i;
+		}
+		
+		for(int i = 2; i * i <= N; i++) {
+			if(prime[i] == 0) continue;
+			for(int j = i * i; j <= N; j += i) {
+				prime[j] = 0;
+			}
+		}
 
+		for(int i = 2; i <= N; i++) {
+			if(prime[i] != 0) {
+				primeArr.add(prime[i]);
+			}
+		}
+	}
 }
