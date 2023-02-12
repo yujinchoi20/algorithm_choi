@@ -24,7 +24,7 @@ public class Main {
 		}
 		maxHeight = Collections.max(list);
 		
-		for(int h = 0; h < maxHeight + 1; h++) {
+		for(int h = 0; h < maxHeight; h++) {
 			visit = new boolean[101][101];
 			num = 0;
 			
