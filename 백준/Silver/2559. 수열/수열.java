@@ -2,11 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	static int N, K;
-	static int arr[];
-	static int sum = 0, maxSum = Integer.MIN_VALUE;
-	
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		int N, K;
