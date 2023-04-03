@@ -34,7 +34,7 @@ public class Main {
 			for(int j = 0; j < N - 1; j++) {
 				if(candy[j][i] != candy[j+1][i]) {
 					swap(j, i, j + 1, i);
-					maxCnt = Math.max(searchMax(), maxCnt);
+					searchMax();
 					swap(j, i, j + 1, i);
 				}
 			}
@@ -49,7 +49,7 @@ public class Main {
 		candy[x2][y2] = tmp;
 	}
 	
-	public static int searchMax() {
+	public static void searchMax() {
 		for(int i = 0; i < N; i++) {
 			int cnt = 1; 
 			for(int j = 0; j < N-1; j++) {
@@ -73,7 +73,5 @@ public class Main {
 				maxCnt = Math.max(maxCnt, cnt);
 			}
 		}
-		
-		return maxCnt;
 	}
 }
