@@ -6,7 +6,9 @@ class Solution {
             int k = queries[i][2];
             
             for(int j = s; j <= e; j++){
-                 arr[j] = j % k == 0 ? arr[j] + 1 : arr[j];
+                 if(j % k == 0){
+                     arr[j] += 1;
+                 }
             }
                 
         }
