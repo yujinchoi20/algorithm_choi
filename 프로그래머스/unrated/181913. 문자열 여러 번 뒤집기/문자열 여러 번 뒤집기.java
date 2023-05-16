@@ -1,32 +1,19 @@
 class Solution {
-    public String solution(String my_string, int[][] queries) {
-        String answer = "";
-        
-        int len = my_string.length();
-        String[] my_str = my_string.split("");
-        String[] str = new String[len];
+    public StringBuilder solution(String my_string, int[][] queries) {
+        StringBuilder str = new StringBuilder(my_string);
         
         for(int i = 0; i < queries.length; i++) {
-            int s = queries[i][0];
-            int e = queries[i][1];
+            int start = queries[i][0];
+            int end = queries[i][1];
             
-            for(int j = 0; j <= e-s; j++) {
-                str[e-j] = my_str[s+j];
-            }
-            for(int j = 0; j <= e-s; j++) {
-                my_str[s+j] = str[s+j];
-            }
+            StringBuilder s = new StringBuilder(str.substring(start, end+1));
+            s.reverse();
+            str.replace(start, end+1, s.toString());
             
-            // for(int j = 0; j < len; j++) {
-            //     System.out.print(my_str[j]);
-            // }
-            // System.out.println();
+            // System.out.println(str);
         }
         
-        for(int i = 0; i < len; i++) {
-            answer += my_str[i];
-        }
         
-        return answer;
+        return str;
     }
 }
