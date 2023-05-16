@@ -2,50 +2,35 @@ import java.util.*;
 
 class Solution {
     public int solution(int a, int b, int c, int d) {
-        int[] arr = new int[4];
-        arr[0] = a; arr[1] = b; arr[2] = c; arr[3] = d;
-        int answer = arr[0];
-        
-        for(int num : arr) {
-            if(num < answer) answer = num;
+        int[] arr = {a, b, c, d};
+        Arrays.sort(arr);
+        for(int i = 0; i < 4; i++){
+            System.out.print(arr[i]);
         }
         
-        if(a == b) {
-            answer = c * d;
-        } else if(a == c) {
-            answer = b * d;
-        } else if(a == d) {
-            answer = c * b;
-        } else if(b == c) {
-            answer = a * d;
-        } else if(b == d) {
-            answer = a * c;
-        } else if(c == d) {
-            answer = a * b;
-        }
+        int answer = 0; 
         
-        if(a == b && b == c && c == d) {
-            answer = 1111 * a;
-        } 
+        if(arr[0] == arr[3]) //모두 같을 경우
+            answer = 1111 * arr[0]; 
         
-        if((a == b && b == c && c != d)) {
-            answer = (int)Math.pow(10 * a + d, 2);
-        } else if((a == b && b == d && c != d)) {
-            answer = (int)Math.pow(10 * a + c, 2);
-        } else if((a == c && c == d && c != b)) {
-            answer = (int)Math.pow(10 * a + b, 2);
-        } else if((d == b && b == c && c != a)) {
-            answer = (int)Math.pow(10 * b + a, 2);
-        } 
+        else if(arr[0] == arr[2]) //3개 같을 경우1
+            answer = (int)Math.pow(10 * arr[0] + arr[3], 2);
+        else if(arr[1] == arr[3]) //3개 같을 경우2
+            answer = (int)Math.pow(10 * arr[1] + arr[0], 2);
         
-        if(a == b && c == d && a != c) {
-            answer = (a + c) * Math.abs(a - c);
-        } else if(a == c && b == d && a != b) {
-            answer = (a + b) * Math.abs(a - b);
-        } else if(a == d && c == b && a != b) {
-            answer = (a + c) * Math.abs(a - c);
-        } 
-            
+        else if(arr[0] == arr[1] && arr[2] == arr[3]) //2개씩 같을 경우
+            answer = (arr[0] + arr[2]) * Math.abs(arr[0] - arr[2]);
+        
+        else if(arr[0] == arr[1]) 
+            answer = arr[2] * arr[3];
+        else if(arr[1] == arr[2]) 
+            answer = arr[0] * arr[3];
+        else if(arr[2] == arr[3]) 
+            answer = arr[0] * arr[1];
+        
+        else //모두 다를 경우 
+            answer = arr[0];
+        
         return answer;
     }
 }
