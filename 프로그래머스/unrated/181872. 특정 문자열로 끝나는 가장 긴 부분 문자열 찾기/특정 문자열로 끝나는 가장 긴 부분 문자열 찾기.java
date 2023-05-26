@@ -3,10 +3,7 @@ class Solution {
         String answer = "";
         int idx = myString.lastIndexOf(pat);
         
-        for(int i = 0; i < idx; i++) {
-            answer += myString.substring(i, i+1);    
-        }
-        answer += pat;
+        answer = myString.substring(0, idx) + pat;
         
         return answer;
     }
