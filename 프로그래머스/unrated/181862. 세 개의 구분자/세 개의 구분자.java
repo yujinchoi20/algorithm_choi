@@ -6,13 +6,16 @@ class Solution {
         String tmp = "";
         
         for(int i = 0; i < myStr.length(); i++) {
-            if(myStr.charAt(i) == 'a' || myStr.charAt(i) == 'b' || myStr.charAt(i) == 'c') {
+            char c = myStr.charAt(i);
+            if(c == 'a' || 
+               c == 'b' || 
+               c == 'c') {
                 if(tmp != "") {
                     answer.add(tmp);
                     tmp = "";
                 } 
             } else {
-                tmp += myStr.charAt(i);
+                tmp += c;
             }
         }
         
