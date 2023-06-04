@@ -8,7 +8,7 @@ class Solution {
         }
         
         ArrayList<Integer> reArr = new ArrayList<>();
-        int[] re = Arrays.stream(arr).distinct().toArray(); //[0, 1, 2, 3]
+        int[] re = Arrays.stream(arr).distinct().toArray(); 
         
         int len = re.length;
         if(len <= k) {
