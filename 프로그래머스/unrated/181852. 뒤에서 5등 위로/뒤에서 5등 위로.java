@@ -1,13 +1,9 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
-    public ArrayList<Integer> solution(int[] num_list) {
-        ArrayList<Integer> answer = new ArrayList<>();
-        Arrays.sort(num_list);
-        
-        for(int i = 5; i < num_list.length; i++){
-            answer.add(num_list[i]);
-        }
+    public int[] solution(int[] num_list) {
+        int[] answer;
+        answer = Arrays.stream(num_list).sorted().skip(5).toArray();
         return answer;
     }
 }
