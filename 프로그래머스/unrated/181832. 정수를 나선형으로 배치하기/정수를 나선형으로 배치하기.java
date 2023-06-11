@@ -1,11 +1,6 @@
 class Solution {
     public int[][] solution(int n) {
         int[][] answer = new int[n][n];
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                answer[i][j] = 0;
-            }
-        }
         
         int x = 0, y = 0;
         int dir = 0; //0:우, 1:하, 2:좌, 3:상
