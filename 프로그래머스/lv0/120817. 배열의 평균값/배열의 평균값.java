@@ -7,7 +7,7 @@ class Solution {
         if(len % 2 == 0) {
             answer = (numbers[range-1] + numbers[range]) / 2.0;
         } else {
-            answer = (double) numbers[range];
+            answer = numbers[range] * 1.0;
         }
         
         return answer;
