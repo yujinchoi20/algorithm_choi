@@ -1,12 +1,11 @@
 class Solution {
     public int solution(String my_string) {
         int answer = 0;
+        my_string = my_string.replaceAll("[*a-zA-Z]", "");
         
-        for(int i = 0; i < my_string.length(); i++) {
-            int n = my_string.charAt(i) - '0';
-            if(n > 0 && n < 10) {
-                answer += n;
-            }
+        String[] arr = my_string.split("");
+        for(int i = 0; i < arr.length; i++) {
+            answer += Integer.parseInt(arr[i]);
         }
         
         return answer;
