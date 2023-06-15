@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 class Solution {
     public int[] solution(String my_string) {
-        my_string = my_string.replaceAll("[a-zA-Z]", "");
+        my_string = my_string.replaceAll("[a-z]", "");
         String[] arr = my_string.split("");
         
         Arrays.sort(arr);
