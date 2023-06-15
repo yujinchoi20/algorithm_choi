@@ -1,23 +1,17 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(String my_string) {
-        ArrayList<Integer> arr = new ArrayList<>();
+        my_string = my_string.replaceAll("[a-zA-Z]", "");
+        String[] arr = my_string.split("");
         
-        for(int i = 0; i < my_string.length(); i++) {
-            int n = my_string.charAt(i) - '0';
-            
-            if(n >= 0 && n <= 9) 
-                arr.add(n);
-        }
+        Arrays.sort(arr);
         
-        int l = arr.size();
+        int l = arr.length;
         int[] answer = new int[l];
-        
         for(int i = 0; i < l; i++) {
-            answer[i] = arr.get(i);
+            answer[i] = Integer.parseInt(arr[i]);
         }
-        Arrays.sort(answer);
         
         return answer;
     }
