@@ -1,24 +1,26 @@
 import java.io.*;
-import java.util.*;
+import java.util.StringTokenizer;
 
 public class Main {
 	static int n, m;
-	static int a, b, x, y;
+	static int p, c; //parent, child
+	static int x, y;
+	static int count = -1;
 	static int[][] arr;
 	static boolean[] visit;
-	static int count = -1; //관계없는 촌수 일 경우 -1 출력
-	static Queue<Integer> q = new LinkedList<>();
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
+		
 		n = Integer.parseInt(br.readLine());
 		arr = new int[n+1][n+1];
 		visit = new boolean[n+1];
 		
 		st = new StringTokenizer(br.readLine());
-		a = Integer.parseInt(st.nextToken());
-		b = Integer.parseInt(st.nextToken());
+		p = Integer.parseInt(st.nextToken());
+		c = Integer.parseInt(st.nextToken());
 		
 		m = Integer.parseInt(br.readLine());
 		while(m-- > 0) {
@@ -30,24 +32,25 @@ public class Main {
 			arr[y][x] = 1;
 		}
 		
-		//시작점과 끝점을 지정 -> 시작점 == 끝점 실행 종료, cnt 출력
-		q.add(a);
-		dfs(a, b, 0);
+		dfs(p, c, 0);
 		
-		System.out.println(count);
+		bw.write(count+"");
+		bw.flush();
+		bw.close();
+		br.close();
 	}
 	
-	public static void dfs(int start, int end, int cnt) {
-		visit[start] = true;
-		if(start == end) {
-			count = cnt;
+	public static void dfs(int s, int e, int c) {
+		visit[s] = true;
+		
+		if(s == e) {
+			count = c;
 			return ;
 		}
 		
 		for(int i = 1; i <= n; i++) {
-			if(arr[start][i] == 1 && !visit[i]) {
-				q.add(i);
-				dfs(i, end, cnt+1);
+			if(arr[s][i] == 1 && !visit[i]) {
+				dfs(i, e, c+1);
 			}
 		}
 	}
