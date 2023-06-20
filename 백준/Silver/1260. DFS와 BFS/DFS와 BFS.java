@@ -1,27 +1,27 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
-	static int N, M, V;
+	static int n, m, v;
+	static int x, y;
 	static int[][] arr;
-	static boolean[] visit_Dfs, visit_Bfs;
-	static Queue<Integer> queue;
+	static boolean[] visitDFS;
+	static boolean[] visitBFS;
+	static Queue<Integer> queue = new LinkedList<>();
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
-		V = Integer.parseInt(st.nextToken());
+		n = Integer.parseInt(st.nextToken());
+		m = Integer.parseInt(st.nextToken());
+		v = Integer.parseInt(st.nextToken());
 		
-		arr = new int[1001][1001];
-		visit_Dfs = new boolean[1001];
-		visit_Bfs = new boolean[1001];
+		arr = new int[n+1][n+1];
+		visitDFS = new boolean[n+1];
+		visitBFS = new boolean[n+1];
 		
-		//양방향
-		int x, y;
-		for(int i = 0; i < M; i++) {
+		while(m-- > 0) {
 			st = new StringTokenizer(br.readLine());
 			x = Integer.parseInt(st.nextToken());
 			y = Integer.parseInt(st.nextToken());
@@ -30,19 +30,19 @@ public class Main {
 			arr[y][x] = 1;
 		}
 		
-		System.out.print(V + " ");
-		dfs(V);
+		System.out.print(v + " ");
+		dfs(v);
 		
 		System.out.println();
-		System.out.print(V + " ");
-		bfs(V);
+		System.out.print(v + " ");
+		bfs(v);
 	}
 	
 	public static void dfs(int s) {
-		visit_Dfs[s] = true;
+		visitDFS[s] = true;
 		
-		for(int i = 1; i <= N; i++) {
-			if(arr[s][i] == 1 && !visit_Dfs[i]) {
+		for(int i = 1; i <= n; i++) {
+			if(arr[s][i] == 1 && !visitDFS[i]) {
 				System.out.print(i + " ");
 				dfs(i);
 			}
@@ -50,18 +50,16 @@ public class Main {
 	}
 	
 	public static void bfs(int s) {
-		visit_Bfs[s] = true;
-		queue = new LinkedList<>();
-		queue.add(s); //맨 뒤에 넣고
+		visitBFS[s] = true;
+		queue.add(v);
 		
-		int tmp;
 		while(!queue.isEmpty()) {
-			tmp = queue.poll(); //맨 앞에 있는 값 가져오기
+			int tmp = queue.poll();
 			
-			for(int i = 1; i <= N; i++) {
-				if(arr[tmp][i] == 1 && !visit_Bfs[i]) {
+			for(int i = 1; i <= n; i++) {
+				if(arr[tmp][i] == 1 && !visitBFS[i]) {
+					visitBFS[i] = true;
 					queue.add(i);
-					visit_Bfs[i] = true;
 					System.out.print(i + " ");
 				}
 			}
