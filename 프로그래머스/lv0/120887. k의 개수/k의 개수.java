@@ -4,13 +4,13 @@ class Solution {
         String str = "";
         
         for(int i = a; i <= b; i++) {
-            str += Integer.toString(i);    
+            str += i+"";
         }      
     
         String[] arr = str.split("");
         
         for(int i = 0; i < arr.length; i++) {
-            if(arr[i].equals(Integer.toString(k)))
+            if(arr[i].equals(k+""))
                 answer++;
         }
         
