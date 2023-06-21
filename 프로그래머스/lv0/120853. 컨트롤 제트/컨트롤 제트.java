@@ -1,14 +1,20 @@
+import java.util.*;
+
 class Solution {
     public int solution(String s) {
         int answer = 0;
-        String[] arr = s.split(" ");
+        Stack<Integer> stack = new Stack<>();
         
-        for(int i = 0; i < arr.length; i++) {
-            if(arr[i].equals("Z")) {
-                answer -= Integer.parseInt(arr[i-1]);
+        for (String num : s.split(" ")) {
+            if(num.equals("Z")) {
+                stack.pop();
             } else {
-                answer += Integer.parseInt(arr[i]);
+                stack.push(Integer.parseInt(num));
             }
+        }
+        
+        for (int i : stack) {
+            answer += i;
         }
         
         return answer;
