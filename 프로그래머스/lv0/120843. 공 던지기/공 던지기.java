@@ -1,23 +1,8 @@
 class Solution {
     public int solution(int[] numbers, int k) {
-        int answer = 0;
-        int n = 1;
-        int idx = 0;
-        
-        while(n < k) {
-            idx += 2;
-            
-            if(idx >= numbers.length) {
-                idx -= (numbers.length);
-            }
-            
-            n++;
-            System.out.println("num: " + numbers[idx]);
-            System.out.println(n);
-        }
-        
-        answer = numbers[idx];
-        
-        return answer;
+        int idx = ((k-1) * 2) % numbers.length;
+        // 1 3 5 1 3
+        // 0 2 4 6(0) 8(2)
+        return numbers[idx];
     }
 }
