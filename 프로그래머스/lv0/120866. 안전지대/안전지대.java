@@ -1,6 +1,8 @@
 class Solution {
-    static int[] dx = {1, -1, 0, 0};
+    //상하좌우
+    static int[] dx = {1, -1, 0, 0}; 
     static int[] dy = {0, 0, 1, -1};
+    //대각선
     static int[] ddx = {-1, 1, -1, 1};
     static int[] ddy = {1, 1, -1, -1};
     static boolean[][] visit;
