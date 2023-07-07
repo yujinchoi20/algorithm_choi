@@ -3,8 +3,7 @@ class Solution {
         int[] answer;
             
         if(arr.length == 1) {
-            answer = new int[1];
-            answer[0] = -1;
+            return new int[]{-1};
         } else {
             answer = new int[arr.length-1];
         }
