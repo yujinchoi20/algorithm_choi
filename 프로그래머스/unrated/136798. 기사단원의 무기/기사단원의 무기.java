@@ -1,11 +1,11 @@
 class Solution {
+    static int[] arr;
     public int solution(int number, int limit, int power) {
         int answer = 0;
-        int[] arr = new int[number+1];
+        arr = new int[number+1];
         
-        for(int i = 1; i <= number; i++) {
-            arr[i] = primeCnt(i);
-            System.out.print(arr[i] + " ");
+        for(int i = 1; i <= number; i++) {    
+            primeCnt(i);
             
             if(arr[i] > limit) {
                 arr[i] = power;
@@ -17,16 +17,19 @@ class Solution {
         return answer;
     }
     
-    public int primeCnt(int num) {
-        if(num == 1) return 1;
+    public void primeCnt(int num) {        
         int cnt = 1;
         
-        for(int i = 1; i <= num/2; i++) {
-            if(num % i == 0) {
-                cnt++;
+        if(num == 1) {
+            arr[num] = cnt;
+        } else{
+            for(int i = 1; i <= num/2; i++) {
+                if(num % i == 0) {
+                    cnt++;
+                }
             }
         }
         
-        return cnt;
+        arr[num] = cnt;
     }
 }
