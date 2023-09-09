@@ -5,20 +5,9 @@ class Solution {
         //2단계
         new_id = new_id.replaceAll("[^a-z-_.0-9]", "");
         //3단계
-        while(new_id.contains("..")) { 
-            new_id = new_id.replace("..", ".");
-        }
+        new_id = new_id.replaceAll("[.]{2,}", ".");
         //4단계
-        if(new_id.length() > 0) {
-            if(new_id.charAt(0) == '.') {
-                new_id = new_id.substring(1, new_id.length());
-            }
-        }
-        if(new_id.length() > 0) {
-            if(new_id.charAt(new_id.length()-1) == '.') {
-                new_id = new_id.substring(0, new_id.length()-1);
-            }
-        }
+        new_id = new_id.replaceAll("^[.]|[.]$", "");
         //5단계
         if(new_id.length() == 0) {
             new_id = "a";
@@ -26,13 +15,7 @@ class Solution {
         //6단계
         if(new_id.length() > 15) {
             new_id = new_id.substring(0, 15);
-            
-            if(new_id.charAt(0) == '.') {
-                new_id = new_id.substring(1, new_id.length());
-            }
-            if(new_id.charAt(new_id.length()-1) == '.') {
-                new_id = new_id.substring(0, new_id.length()-1);
-            }
+            new_id = new_id.replaceAll("[.]$", "");
         }
         //7단계
         if(new_id.length() == 1) {
