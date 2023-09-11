@@ -17,6 +17,7 @@ class Solution {
         for(int i = 0; i < survey.length; i++) {
             String[] s = survey[i].split("");
             
+            //누적 값을 놓치고 있었음..!
             if(choices[i] < 4) {
                 map.put(s[0], map.getOrDefault(s[0], 0) + 4 - choices[i]);
             } else {
