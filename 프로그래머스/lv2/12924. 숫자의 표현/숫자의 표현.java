@@ -7,7 +7,7 @@ class Solution {
             if(n % div == 0) {
                 ++answer;
             }
-            div += 2;
+            div += 2; //등차수열
         }
         
         return answer;
