@@ -21,8 +21,7 @@ class Solution {
                     list.add(cities[i]);
                     answer += 5;
                 } else { //hit
-                    int idx = list.indexOf(cities[i]);
-                    list.remove(idx); //맨 앞 삭제
+                    list.remove(cities[i]); //맨 앞 삭제
                     list.add(cities[i]); //맨 뒤 삽입
                     answer += 1;
                 }
@@ -32,9 +31,8 @@ class Solution {
                     list.add(cities[i]);
                     answer += 5;
                 } else { //hit
-                    int idx = list.indexOf(cities[i]);
-                    list.remove(idx);
-                    list.add(cities[i]);
+                    list.remove(cities[i]); 
+                    list.add(cities[i]); 
                     answer += 1;
                 }
             }
