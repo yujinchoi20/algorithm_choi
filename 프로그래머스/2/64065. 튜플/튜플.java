@@ -27,18 +27,17 @@ class Solution {
         }); //list 길이에 따라 정렬
         
         //중복 숫자 거르기
-        List<Integer> a = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
         for(List<Integer> l : lists) {
             for(int i : l) {
-                if(a.contains(i) == false) {
-                    a.add(i);
-                }
+                if(!ans.contains(i))
+                    ans.add(i);
             }
         }
         
-        answer = new int[a.size()];
-        for(int i = 0; i < a.size(); i++) {
-            answer[i] = a.get(i);
+        answer = new int[ans.size()];
+        for(int i = 0; i < ans.size(); i++) {
+            answer[i] = ans.get(i);
         }
         
         return answer;
