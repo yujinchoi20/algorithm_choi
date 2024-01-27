@@ -11,7 +11,7 @@ class Solution {
     public static int solution(int[][] maps) {
         n = maps.length;
         m = maps[0].length;
-        visited = new int[maps.length][maps[0].length];
+        visited = new int[n][m];
         
         visited[0][0] = 1;
         bfs(maps, 0, 0); //호출
