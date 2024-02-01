@@ -47,7 +47,7 @@ class Solution {
                     parking.put(entrySet.getKey(), allTime);
                 }
                 
-                //inTime.remove(entrySet.getKey());
+                //inTime.remove(entrySet.getKey()); //동시성 문제로 런타임 오류 발생
             }
         }
         
@@ -59,16 +59,9 @@ class Solution {
             
             if(time <= fees[0]) { //기본 시간만큼 주차한 경우
                 answer[idx] = fees[1];
-                idx++;
-                continue;
+            } else { //초과 시간 계산 
+            	answer[idx] = fees[1] + (int) Math.ceil((time - fees[0]) / (double)fees[2]) * fees[3];
             }
-            
-            answer[idx] = fees[1] + (((time - fees[0]) / fees[2]) * fees[3]);
-            
-            if((time - fees[0]) % fees[2] != 0) { //초과 시간이 단위 시간으로 나누어 떨어지지 않을 경우,
-                answer[idx] += fees[3];
-            }
-            
             idx++;
         }
         
