@@ -17,32 +17,48 @@ class Solution {
         return answer;
     }
     
-    public static void dfs(String[] words, String start, String target, int level) {
-		if(start.equals(target)) {
+    public static void dfs(String[] words, String begin, String target, int level) {
+		if(begin.equals(target)) { //탈출 조건
 			answer = level;
 			return ;
 		}
 		
 		for(int i = 0; i < words.length; i++) {
-			if(words[i].equals(start)) {
+			if(words[i].equals(begin)) {
 				continue;
 			}
 			
-			String[] wordArr = words[i].split("");
-			String[] startArr = start.split("");
+			String[] wordArr = change(words[i]);
+			String[] beginArr = change(begin);
 			
-			int cnt = 0; //한 번에 한 개의 알파벳만 바꿀 수 있다는 조건
-			for(int j = 0; j < wordArr.length; j++) {
-				if(!wordArr[j].equals(startArr[j])) {
-					cnt++;
-				}
-			}
+			int count = cnt(words[i], begin);
 			
-			if(cnt == 1 && !visited[i]) {
+			if(count == 1 && !visited[i]) {
 				visited[i] = true;
 				dfs(words, words[i], target, level + 1);
 				visited[i] = false;
 			}
 		}
 	}
+    
+    //조건 1 검증
+    public static int cnt(String word, String begin) {
+        String[] a = change(word);
+        String[] b = change(begin);
+        int count = 0;
+        
+        for(int i = 0; i < a.length; i++) {
+            if(!a[i].equals(b[i])) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+    
+    //String -> String[] 
+    public static String[] change(String str) {
+        String[] strArr = str.split("");
+        return strArr;
+    }
 }
