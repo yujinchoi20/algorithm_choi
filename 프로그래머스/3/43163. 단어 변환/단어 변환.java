@@ -1,43 +1,48 @@
-import java.util.*;
+import java.util.Queue;
+import java.util.LinkedList;
+
+class Node {
+    String word;
+    int level;
+    
+    public Node(String word, int level) {
+        this.word = word;
+        this.level = level;
+    } 
+}
 
 class Solution {
-    static boolean[] visited;
-	static int answer;
-    
     public int solution(String begin, String target, String[] words) {
-        visited = new boolean[words.length];		
-		List<String> list = Arrays.asList(words);
-		
-		if(!list.contains(target)) {
-			return 0;
-		}
-
-		dfs(words, begin, target, 0);
+        int answer = 0;
         
+        Queue<Node> queue = new LinkedList<>();
+        boolean[] visited = new boolean[words.length];
+        
+        queue.add(new Node(begin, 0));
+        
+        while(!queue.isEmpty()) {
+            Node node = queue.poll();
+            
+            if(node.word.equals(target)) {
+                answer = node.level;
+                break;
+            }
+            
+            for(int i = 0; i < words.length; i++) {
+                int count = cnt(words[i], node.word);
+                
+                if(count == 1 && !visited[i]) {
+                    visited[i] = true;
+                    queue.add(new Node(words[i], node.level+1));
+                }
+            }
+        }
         return answer;
     }
     
-    public static void dfs(String[] words, String begin, String target, int level) {
-		if(begin.equals(target)) { //탈출 조건
-			answer = level;
-			return ;
-		}
-		
-		for(int i = 0; i < words.length; i++) {
-			int count = cnt(words[i], begin);
-			
-			if(count == 1 && !visited[i]) {
-				visited[i] = true;
-				dfs(words, words[i], target, level + 1);
-				visited[i] = false;
-			}
-		}
-	}
-    
-    //조건 1 검증
     public static int cnt(String word, String begin) {
-        String[] a = change(word);
-        String[] b = change(begin);
+        String[] a = word.split("");
+        String[] b = begin.split("");
         int count = 0;
         
         for(int i = 0; i < a.length; i++) {
@@ -47,11 +52,5 @@ class Solution {
         }
         
         return count;
-    }
-    
-    //String -> String[] 
-    public static String[] change(String str) {
-        String[] strArr = str.split("");
-        return strArr;
     }
 }
