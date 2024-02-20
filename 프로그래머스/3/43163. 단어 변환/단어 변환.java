@@ -24,13 +24,6 @@ class Solution {
 		}
 		
 		for(int i = 0; i < words.length; i++) {
-			if(words[i].equals(begin)) {
-				continue;
-			}
-			
-			String[] wordArr = change(words[i]);
-			String[] beginArr = change(begin);
-			
 			int count = cnt(words[i], begin);
 			
 			if(count == 1 && !visited[i]) {
