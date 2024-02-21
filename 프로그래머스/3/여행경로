@@ -1,1 +1,49 @@
-# [level 3] 여행 경로
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+
+class Solution {
+    static boolean[] visited; //방문확인
+	static String[] answer; //반환값
+	static ArrayList<String> list; //경로 저장
+    
+    public String[] solution(String[][] tickets) {
+		int n = tickets.length+1;
+		answer = new String[n];
+		visited = new boolean[n];
+		list = new ArrayList<>();
+
+		Arrays.sort(tickets, new Comparator<String[]>() {
+
+			@Override
+			public int compare(String[] o1, String[] o2) {
+				if(o1[0].toString().contentEquals(o2[0].toString())) {
+					return o1[1].toString().compareTo(o2[1].toString());
+				} else {
+					return o1[0].toString().compareTo(o2[0].toString());
+				}
+			}
+			
+		}); //2차원 배열 정렬
+		
+		dfs(tickets, "ICN", "ICN", 0);
+		answer = list.get(0).split(" ");
+        
+		return answer;
+	}
+	
+	public static void dfs(String[][] tickets, String dip, String route, int dep) {
+		if(dep == tickets.length) {
+            list.add(route);
+			return ;
+		}
+		
+		for(int i = 0; i < tickets.length; i++) {
+			if(tickets[i][0].equals(dip) && !visited[i]) {
+				visited[i] = true;
+				dfs(tickets, tickets[i][1], route+" "+tickets[i][1], dep+1);
+				visited[i] = false;
+			}
+		}
+	}
+}
